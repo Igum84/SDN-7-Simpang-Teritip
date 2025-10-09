@@ -67,6 +67,15 @@ main{flex-grow:1}
 .btn.primary{background:var(--primary);color:#fff}
 .btn.ghost{border:1px solid var(--primary);color:var(--primary);background:transparent}
 
+.hero-cta {
+  display: flex;
+  gap: 12px;
+}
+.hero-cta .btn {
+  flex: 1; /* Membuat tombol memiliki lebar yang sama */
+  text-align: center;
+}
+
 @media (max-width:900px){
   .hero-inner{grid-template-columns:1fr;}
   .hero-carousel{order:-1; margin-bottom: 24px;}
@@ -87,6 +96,11 @@ main{flex-grow:1}
   opacity: 1;
 }
 
+@media (max-width: 600px) {
+  .hero-cta {
+    flex-direction: column; /* Mengubah tata letak menjadi vertikal */
+  }
+}
 
 @media (max-width:900px){
   .hero-carousel{max-height: 280px;}
