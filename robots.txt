@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://igum84.github.io/SDN-7-Simpang-Teritip/sitemap.xml
