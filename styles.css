@@ -1,0 +1,161 @@
+/* Styles for SDN 7 Simpang Teritip - responsive homepage */
+:root{
+  --bg:#96c0eb;
+  --primary:#1a6bbb;
+  --accent:#06d6a0;
+  --muted:#060a11;
+  --max-width:1100px;
+  --radius:12px;
+  --glass: rgba(206, 90, 90, 0.6);
+}
+*{box-sizing:border-box}
+html{height:100%}
+body{
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  margin:0;background:var(--bg);color:#111;line-height:1.5;min-height:100vh;display:flex;flex-direction:column;
+}
+.container{width:90%;max-width:var(--max-width);margin:0 auto}
+.site-header{background:linear-gradient(90deg, #ffffffcc, #ffffffcc);backdrop-filter: blur(4px);position:sticky;top:0;z-index:40;border-bottom:1px solid #eee}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.brand{display:flex;gap:12px;align-items:center;text-decoration:none;color:inherit}
+.brand-text{display:flex;flex-direction:column}
+.school-name{font-weight:700}
+.school-tag{font-size:12px;color:var(--muted)}
+
+.brand-heading{display:flex;align-items:center;gap:10px}
+.brand-img{width:40px;height:40px;object-fit:cover;border-radius:6px;border:1px solid rgba(0,0,0,0.06)}
+.brand-title{display:flex;flex-direction:column;line-height:1}
+.brand-title .school-name{font-weight:700}
+.brand-title .school-tag{font-size:12px;color:var(--muted);margin-top:2px}
+
+@media (max-width:520px){
+  .brand-heading{gap:8px}
+  .brand-img{width:32px;height:32px}
+  .brand-title .school-name{font-size:0.95rem}
+  .brand-title .school-tag{font-size:11px}
+}
+.main-nav ul{list-style:none;margin:0;padding:0;display:flex;gap:18px}
+.main-nav a{text-decoration:none;color:var(--muted);font-weight:600}
+.main-nav a:hover{color:var(--primary)}
+
+/* Hamburger */
+.hamburger{background:none;border:0;display:none;padding:8px;cursor:pointer}
+.hamburger-box{width:28px;height:18px;display:inline-block;position:relative}
+.hamburger-inner{position:absolute;top:50%;left:0;right:0;height:2px;background:#111;display:block;transform:translateY(-50%)}
+.hamburger-inner::before,.hamburger-inner::after{content:'';position:absolute;left:0;right:0;height:2px;background:#111}
+.hamburger-inner::before{top:-8px}
+.hamburger-inner::after{bottom:-8px}
+.hamburger[aria-expanded="true"] .hamburger-inner{background:transparent}
+.hamburger[aria-expanded="true"] .hamburger-inner::before{transform:rotate(45deg);top:0}
+.hamburger[aria-expanded="true"] .hamburger-inner::after{transform:rotate(-45deg);bottom:0}
+
+/* Mobile nav overlay */
+@media (max-width:900px){
+  .hamburger{display:inline-block}
+  .main-nav{position:fixed;inset:0;top:60px;background:linear-gradient(180deg,#fff, #f3f6ff);padding:28px;transform:translateY(-6%);opacity:0;pointer-events:none;transition:all .22s ease;border-top:1px solid #eee}
+  .main-nav[aria-hidden="false"]{transform:none;opacity:1;pointer-events:auto}
+  .main-nav ul{flex-direction:column;gap:14px}
+}
+
+/* full page overlay used to blur background when nav is open */
+.nav-overlay{position:fixed;inset:0;z-index:30;pointer-events:none;opacity:0;transition:opacity .22s ease, backdrop-filter .22s ease;background:rgba(255,255,255,0);backdrop-filter:blur(0px)}
+.nav-overlay[aria-hidden="false"]{pointer-events:auto;opacity:1;background:rgba(255,255,255,0.15);backdrop-filter:blur(6px)}
+
+/* Hero */
+main{flex-grow:1}
+.hero{padding:48px 0;background:linear-gradient(135deg,#e6f3ff 0%, #ffffff 100%)}
+.hero-inner{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:center}
+.hero h1{font-size:clamp(1.6rem,2.8vw,2.4rem);margin:0 0 8px}
+.hero p{color:var(--muted);margin:0 0 18px}
+.btn{display:inline-block;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:600}
+.btn.primary{background:var(--primary);color:#fff}
+.btn.ghost{border:1px solid var(--primary);color:var(--primary);background:transparent}
+
+@media (max-width:900px){
+  .hero-inner{grid-template-columns:1fr;}
+  .hero-carousel{order:-1; margin-bottom: 24px;}
+}
+
+/* Hero Carousel */
+.hero-carousel{overflow:hidden;border-radius:var(--radius);box-shadow:0 8px 24px rgba(0,0,0,0.08);max-height: 360px;}
+.carousel-slide{position:relative;width:100%;flex-shrink:0}
+.carousel-track{display:flex;transition:transform .5s ease-in-out}
+.carousel-slide img{width:100%;height:auto;object-fit:cover;min-height: 320px;display:block}
+.carousel-caption{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.5);color:#fff;padding:12px 16px;text-align:center;transform:translateY(100%);opacity:0;transition:all .4s ease}
+.carousel-caption h3{margin:0 0 4px;font-size:1rem}
+.carousel-caption p{margin:0;font-size:0.85rem;opacity:0.9}
+
+/* Animate caption in */
+.hero-carousel:hover .carousel-caption{
+  transform: translateY(0);
+  opacity: 1;
+}
+
+
+@media (max-width:900px){
+  .hero-carousel{max-height: 280px;}
+  .hero-carousel img{min-height: 240px;}
+}
+
+
+/* Sections */
+.section{padding:48px 0}
+.section h2{margin:0 0 12px}
+
+/* Section-specific backgrounds for visual separation */
+.about, .gallery { background: #fff; }
+.programs, .contact { background: #f3f6ff; }
+
+
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.features article{background:var(--glass);border-radius:10px;border:1px solid #eee;overflow:hidden;display:flex;flex-direction:column}
+.features article img{width:100%;height:160px;object-fit:cover}
+.features article h3{padding:0 16px;margin-top:12px;margin-bottom:4px}
+.features article p{padding:0 16px 16px;margin-top:0;flex-grow:1}
+
+@media (max-width:900px){
+  .features{grid-template-columns:1fr}
+}
+
+/* Program Grid */
+.program-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.program-grid article{background:var(--glass);border-radius:10px;border:1px solid #eee;overflow:hidden;display:flex;flex-direction:column}
+.program-grid article img{width:100%;height:140px;object-fit:cover}
+.program-grid article h3{padding:0 16px;margin-top:12px;margin-bottom:4px;font-size:1rem}
+.program-grid article p{padding:0 16px 16px;margin-top:0;flex-grow:1;font-size:0.9rem}
+
+/* Gallery Carousel */
+.gallery-carousel-wrapper{position:relative}
+.gallery-carousel{overflow:hidden}
+.gallery-track{display:flex;gap:16px;transition:transform .4s ease-in-out}
+.gallery-slide{position:relative;flex:0 0 calc(100% / 3 - 16px * 2 / 3);border-radius:var(--radius);overflow:hidden;cursor:pointer}
+.gallery-slide img{width:100%;height:220px;object-fit:cover;display:block}
+.gallery-caption{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.6);color:#fff;padding:10px;text-align:center;font-size:0.9rem;opacity:0;transform:translateY(100%);transition:all .3s ease-out}
+.gallery-slide:hover .gallery-caption{opacity:1;transform:translateY(0)}
+.carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.8);border:1px solid #ddd;width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:1.2rem;color:#333;z-index:10;display:flex;align-items:center;justify-content:center}
+.carousel-btn.prev{left:-20px}
+.carousel-btn.next{right:-20px}
+.carousel-btn:disabled{opacity:0.4;cursor:not-allowed}
+
+@media (max-width:900px){
+  .gallery-slide{flex-basis:calc(50% - 8px)}
+  .carousel-btn.prev{left:0}
+  .carousel-btn.next{right:0}
+}
+@media (max-width:600px){.gallery-slide{flex-basis:100%}}
+
+.contact-grid{display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:start}
+.contact-form{display:flex;flex-direction:column;gap:10px}
+.contact-form input,.contact-form textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #ddd}
+.form-actions{display:flex;justify-content:flex-end}
+@media (max-width:900px){.contact-grid{grid-template-columns:1fr}}
+@media (max-width:1024px){
+  .program-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:600px){.program-grid{grid-template-columns:1fr}}
+.site-footer{border-top:1px solid #eee;padding:18px 0;background:#fff}
+.footer-inner{display:flex;justify-content:space-between;align-items:center}
+.footer-inner nav a{margin-left:12px;color:var(--muted);text-decoration:none}
+
+/* Accessibility focus */
+a:focus,button:focus,input:focus,textarea:focus{outline:3px solid rgba(30,144,255,0.15);outline-offset:2px}
