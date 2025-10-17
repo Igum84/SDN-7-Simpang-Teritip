@@ -116,7 +116,12 @@ main{flex-grow:1}
 .about, .gallery, .news { background: #fff; }
 .programs, .contact { background: #f3f6ff; }
 
-/* News Section - uses .features styles for consistency */
+/* News Section */
+.news .grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px; /* Memberi jarak/batasan antar artikel berita */
+}
 .news article {
   background: var(--glass);
   border-radius: 10px;
@@ -124,12 +129,22 @@ main{flex-grow:1}
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+.news article:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.07);
 }
 .news .read-more {
   padding: 0 16px 16px;
   text-decoration: none;
   font-weight: 600;
   color: var(--primary);
+  transition: color 0.2s ease;
+}
+.news .read-more:hover {
+  color: #004a8c; /* Warna sedikit lebih gelap saat hover */
+  text-decoration: underline;
 }
 
 
