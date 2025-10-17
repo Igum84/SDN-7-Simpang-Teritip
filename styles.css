@@ -113,8 +113,24 @@ main{flex-grow:1}
 .section h2{margin:0 0 12px}
 
 /* Section-specific backgrounds for visual separation */
-.about, .gallery { background: #fff; }
+.about, .gallery, .news { background: #fff; }
 .programs, .contact { background: #f3f6ff; }
+
+/* News Section - uses .features styles for consistency */
+.news article {
+  background: var(--glass);
+  border-radius: 10px;
+  border: 1px solid #eee;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.news .read-more {
+  padding: 0 16px 16px;
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--primary);
+}
 
 
 .features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -153,6 +169,10 @@ main{flex-grow:1}
   .carousel-btn.next{right:0}
 }
 @media (max-width:600px){.gallery-slide{flex-basis:100%}}
+@media (max-width:900px){
+  .news .grid{grid-template-columns:1fr}
+}
+
 
 .contact-grid{display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:start}
 .contact-form{display:flex;flex-direction:column;gap:10px}
